@@ -25,7 +25,7 @@ const Character = ({character} ) => {
         </img> 
         
         <p>
-        <h5><span className="text-info">Name:</span> {character.name}</h5>
+    
         <h5><span className="text-info">Origin:</span> {character.origin.name} </h5>
         <h5><span className="text-info">Status:</span> {statusCharacter (status) }
         
