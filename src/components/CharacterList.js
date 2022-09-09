@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Character from "./Character";
 import Search from "./search";
+import prueba2 from "./prueba2";
 
 function NavPage ({page, setPage}) {
   return (
@@ -80,7 +81,7 @@ function CharacterList () {
            {characters.map(character => {
               return (
                 <div className="col-md-3" key={character.id}>
-                    <Character character={character} />
+                    <prueba2 character={character} />
                 </div>
                 
               )

@@ -4,20 +4,8 @@ import { useState } from "react"
 const Character = ({character} ) => {
 
     const status = character.status;
-
-    function statusCharacter(status){
-		switch (status) {
-			case 'Alive':
-				return ( <span>Alive 🟢</span>);
-				break;
-			case 'Dead':
-				return ( <span>Dead 🔴</span>);
-				break;
-			case 'unknown':
-				return ( <span>Unknown</span>);
-				break;
-		}
-	}
+    const display = character.results;  
+  
 
     return (
         <div className='text-center p-3' > 
@@ -27,9 +15,39 @@ const Character = ({character} ) => {
         <p>
     
         <h5><span className="text-info">Origin:</span> {character.origin.name} </h5>
-        <h5><span className="text-info">Status:</span> {statusCharacter (status) }
+        <h5><span className="text-info">Status:</span>
         
-       
+        {(() => {
+            if (status === "Dead") {
+              return (
+                <div
+                  
+                >
+                  {status}
+                </div>
+              );
+            } else if (status === "Alive") {
+              return (
+                <div
+                  
+                >
+                  {status}
+                </div>
+              );
+            } else {
+              return (
+                <div
+                  
+                >
+                  {status}
+                </div>
+              );
+            }
+          })()}
+        
+   
+  
+
 
          </h5>  
         </p>
