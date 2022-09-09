@@ -45,58 +45,35 @@ function CharacterList () {
     const [page, setPage] = useState (1)
     const [search, setSearch] = useState("")
     const [fetchedData, updateFetchedData] = useState([]);
-    const { info, results } = fetchedData;
+    const { info, results } = fetchedData ();
 
     
   
     const api = `https://rickandmortyapi.com/api/character/?page=${page}&name=${search}`;  
 
     useEffect(() => {
-        async function fetchData () {
-          const response = await fetch (api)
-          const data = await response.json ()
-          setLoading (false)
-          setCharacters (data.results)
-          updateFetchedData(data)
-          
-        }
+      (async function () {
+        let data = await fetch(api).then((res) => res.json());
+        updateFetchedData(data);
+      })();
+      }, [api]);
       
 
-        fetchData ()
-      }, [page, search]);
-      
-
-    return (
-        <div className="container ">    
-           
-      <NavPage page={page} setPage={setPage} />
-
-           { 
-        loading ? (<h1> Loading </h1>) : (
-          
-          <div className="row text-center align-center">
-            <h1>Characters</h1>
-            <Search setSearch={setSearch} setPage={setPage} />
-
-           {characters.map(character => {
-              return (
-                <div className="col-md-3" key={character.id}>
-                    <prueba2 character={character} />
+      return (
+        <div className="App">
+          <h1 className="text-center mb-3">Characters</h1>
+          <Search setSearch={setSearch} updatePageNumber={updatePageNumber} />
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-8 col-12">
+                <div className="row">
+                  <Card page="/" results={results} />
                 </div>
-                
-              )
-            })
-          }
-      <NavPage page={page} setPage={setPage}/>
-
-           </div>
-           
-        )
-      }
+              </div>
+            </div>
           </div>
-
-    )
-}
-
-
-export default CharacterList
+        </div>
+      );
+    };
+    
+    export default App;

@@ -1,26 +1,30 @@
-import React from "react"
-import { useState } from "react"
+import React from "react";
+import styles from "./card.style.css";
 
-const prueba2 = ({ character}) => {
+const prueba2 = ({ page, results }) => {
+  let display;
 
-    let display;
-
-  if (character) {
-   display = character.map((x) => {
-      const { image, name, status, location } = x;
+  if (results) {
+    display = results.map((x) => {
+      let { id, image, name, status, location } = x;
 
       return (
         <div
-        className='text-center p-3'
+          style={{ textDecoration: "none" }}
+          to={`${page}${id}`}
+          key={id}
+          className="col-lg-4 col-md-6 col-sm-6 col-12 mb-4 position-relative text-dark"
         >
           <div
-            className={`d-flex flex-column justify-content-center`}
+            className={`${styles.card} d-flex flex-column justify-content-center`}
           >
-            <img className="img-fluid rounded-circle" src={character.image} alt={character.name} >
-        </img> 
-            <div>
+            <img className={`${styles.img} img-fluid`} src={image} alt="" />
+            <div className={`${styles.content}`}>
               <div className="fs-5 fw-bold mb-4">{name}</div>
-              
+              <div className="">
+                <div className="fs-6 fw-normal">Last Location</div>
+                <div className="fs-5">{location.name}</div>
+              </div>
             </div>
           </div>
 
@@ -28,7 +32,7 @@ const prueba2 = ({ character}) => {
             if (status === "Dead") {
               return (
                 <div
-                  className={`position-absolute badge bg-danger`}
+                  className={`${styles.badge} position-absolute badge bg-danger`}
                 >
                   {status}
                 </div>
@@ -36,7 +40,7 @@ const prueba2 = ({ character}) => {
             } else if (status === "Alive") {
               return (
                 <div
-                  className={`position-absolute badge bg-success`}
+                  className={`${styles.badge} position-absolute badge bg-success`}
                 >
                   {status}
                 </div>
@@ -44,7 +48,7 @@ const prueba2 = ({ character}) => {
             } else {
               return (
                 <div
-                  className={`position-absolute badge bg-secondary`}
+                  className={`${styles.badge} position-absolute badge bg-secondary`}
                 >
                   {status}
                 </div>
