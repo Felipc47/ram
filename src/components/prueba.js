@@ -4,7 +4,7 @@ import styles from "./Card.module.scss";
 import CardDetails from "./CardDetails";
 
 const Card = ({ page, results }) => {
-  let display;
+  let display = results;
 
   if (results) {
     display = results.map((x) => {
