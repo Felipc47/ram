@@ -9,23 +9,23 @@ function NavPage ({page, setPage}) {
           <ul className="navbar">
             <li className="list-unstyled"> 
             {
-              page == 1 ? <button disabled={true} className="btn btn-lg btn-dark"> Principal page </button> 
-              : <button disabled={false} onClick={() => setPage(page - 1)} className="btn btn-lg btn-outline-info"> ⇦ Page {page - 1}  </button>
+              page == 1 ? <button disabled={true} className="btn btn-md btn-dark"> Principal page </button> 
+              : <button disabled={false} onClick={() => setPage(page - 1)} className="btn btn-md btn-outline-info"> ⇦ Page {page - 1}  </button>
             }
             
             
             </li>
            
           <li className="list-unstyled">
-            <button onClick={() => setPage(1)} className="btn btn-lg btn-outline-info">🏠</button>
+            <button onClick={() => setPage(1)} className="btn btn-md btn-outline-info">🏠</button>
             </li>
 
             
           <li className="list-unstyled">
 
             {
-              page == 43 ? <button disabled={true} className="btn btn-lg
-               btn-outline-info">  Last page </button> : <button disabled={false} onClick={() => setPage(page + 1)} className="btn btn-lg btn-outline-info"> Page {page + 1} ⇨ </button>
+              page == 43 ? <button disabled={true} className="btn btn-md
+               btn-outline-info">  Last page </button> : <button disabled={false} onClick={() => setPage(page + 1)} className="btn btn-md btn-outline-info"> Page {page + 1} ⇨ </button>
             }
 
           </li>
@@ -39,7 +39,6 @@ function NavPage ({page, setPage}) {
 
 function CharacterList () {
 
-    const [characters, setCharacters] = useState ([])
     const [loading, setLoading] = useState (true)
     const [page, setPage] = useState (1)
     const [search, setSearch] = useState("")
@@ -55,7 +54,6 @@ function CharacterList () {
           const response = await fetch (api)
           const data = await response.json ()
           setLoading (false)
-          setCharacters (data.results)
           updateFetchedData(data)
           
         }
@@ -76,16 +74,19 @@ function CharacterList () {
           <div className="row text-center align-center">
             <h1>Characters</h1>
             <Search setSearch={setSearch} setPage={setPage} />
-
-           {characters.map(character => {
-              return (
-                <div className="col-md-3" key={character.id}>
-                    <Character character={character} />
-                </div>
-                
-              )
-            })
-          }
+            <div className="container">
+  <div className="row">
+    Filter component will be placed here
+    <div className="col-lg-8 col-12">
+      <div className="row">
+      <Character results = {results} />
+        
+      </div>
+    </div>
+  </div>
+  </div>
+            
+               
       <NavPage page={page} setPage={setPage}/>
 
            </div>

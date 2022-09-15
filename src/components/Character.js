@@ -1,40 +1,78 @@
 import React from "react"
 import { useState } from "react"
+import styles from "../components/stylescharacter.css"
 
-const Character = ({character} ) => {
+const Character = ({ results }) => {
+  let display;
 
-    const status = character.status;
+  if (results) {
+      display = results.map((x) => {
+      let { id, image, name, status, location } = x;
 
-    function statusCharacter(status){
-		switch (status) {
-			case 'Alive':
-				return ( <span>Alive 🟢</span>);
-				break;
-			case 'Dead':
-				return ( <span>Dead 🔴</span>);
-				break;
-			case 'unknown':
-				return ( <span>Unknown</span>);
-				break;
-		}
-	}
+      return (
+          <div
+      key={id}
+      className="col-lg-4 col-md-6 col-sm-6 col-12 mb-4 text-dark"
+    >
 
-    return (
-        <div className='text-center p-3' > 
-        <img className="img-fluid rounded-circle" src={character.image} alt={character.name} >
-        </img> 
-        
-        <p>
-        <h5><span className="text-info">Name:</span> {character.name}</h5>
-        <h5><span className="text-info">Origin:</span> {character.origin.name} </h5>
-        <h5><span className="text-info">Status:</span> {statusCharacter (status) }
-        
-       
 
-         </h5>  
-        </p>
-        </div>  
-    )
+<div
+          className={` bg-white flex-column justify-content-center`}>
+
+          <div className="fs-4 mb-4">{name}</div>
+          <img className={`img-fluid`} src={image} alt="" />
+          <div >
+            
+              <div className="fs-5">Last Location</div>
+              <div className="fs-6">{location.name}</div>
+          </div>
+        </div>
+
+        {(() => {
+          if (status === "Dead") {
+            return (
+              <div
+                className={`bg-danger`}
+              >
+                {status}
+              </div>
+            );
+          } else if (status === "Alive") {
+            return (
+              <div
+                className={`bg-success`}
+              >
+                {status}
+              </div>
+            );
+          } else {
+            return (
+              <div
+                className="bg-info"
+              >
+                {status}
+              </div>
+            );
+          }
+        })()}
+      
+    </div>
+    
+   );
+  });
+} else {
+  return (
+    <div className="text-info">
+  No found
+
+  </div>
+  )
 }
+
+return <>{display}</>;
+};
+
+
+
 
 export default Character

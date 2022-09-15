@@ -7,7 +7,7 @@ const Search = ({ setSearch, setPage }) => {
   };
   return (
     <form
-      className={`${styles.search} d-flex flex-sm-row flex-column align-items-center justify-content-center gap-4 mb-5`}
+      className={`d-flex flex-sm-row flex-column align-items-center justify-content-center gap-4 mb-5`}
     >
       <input
         onChange={(e) => {
@@ -20,7 +20,7 @@ const Search = ({ setSearch, setPage }) => {
       />
       <button
         onClick={searchBtn}
-        className={`${styles.btn} btn btn-primary fs-5`}
+        className={`btn btn-primary fs-5`}
       >
         Search
       </button>
