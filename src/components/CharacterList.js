@@ -9,7 +9,7 @@ function NavPage ({page, setPage}) {
           <ul className="navbar">
             <li className="list-unstyled"> 
             {
-              page == 1 ? <button disabled={true} className="btn btn-md btn-dark"> Principal page </button> 
+              page == 1 ? <button disabled={true} className="btn btn-md btn-outline-info"> Principal page </button> 
               : <button disabled={false} onClick={() => setPage(page - 1)} className="btn btn-md btn-outline-info"> ⇦ Page {page - 1}  </button>
             }
             

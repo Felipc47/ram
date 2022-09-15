@@ -17,7 +17,7 @@ const Character = ({ results }) => {
 
 
 <div
-          className={` bg-white flex-column justify-content-center`}>
+          className={` bg-white flex-column justify-content-center border border-primary rounded-2`}>
 
           <div className="fs-4 mb-4">{name}</div>
           <img className={`img-fluid`} src={image} alt="" />
@@ -26,7 +26,7 @@ const Character = ({ results }) => {
               <div className="fs-5">Last Location</div>
               <div className="fs-6">{location.name}</div>
           </div>
-        </div>
+        
 
         {(() => {
           if (status === "Dead") {
@@ -57,13 +57,14 @@ const Character = ({ results }) => {
         })()}
       
     </div>
+    </div>
     
    );
   });
 } else {
   return (
     <div className="text-info">
-  No found
+  Not found
 
   </div>
   )

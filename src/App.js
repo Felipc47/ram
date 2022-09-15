@@ -11,8 +11,8 @@ function App() {
   const [mode, SetMode] = useState () 
 
 
-  return <div className='bg-secondary text-white'>
-    <h1 className='text-left display-6 bg-dark py-3 px-3 lead text-info'> 
+  return <div className='bg-white text-dark'>
+    <h1 className='text-left display-6 bg-primary py-3 px-3 lead text-white'> 
     Rick and Morty | Wiki </h1>
 
     
