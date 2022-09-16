@@ -1,19 +1,12 @@
 import React from "react";
-import Gender from "./category/Gender";
-import Species from "./category/Species";
-import Status from "./category/Status";
+import Status from "./Filter/Category/Status"
 
 const Filter = ({
-  page,
   setPage,
-  updateStatus,
-  updateGender,
-  updateSpecies,
+  setStatus,
 }) => {
   let clear = () => {
-    updateStatus("");
-    updateGender("");
-    updateSpecies("");
+    setStatus("");
     setPage(1);
     window.location.reload(false);
   };
@@ -30,16 +23,9 @@ const Filter = ({
       <div className="accordion" id="accordionExample">
         <Status
           setPage={setPage}
-          updateStatus={updateStatus}
+          setStatus={setStatus}
         />
-        <Species
-          setPage={setPage}
-          updateSpecies={updateSpecies}
-        />
-        <Gender
-          setPage={setPage}
-          updateGender={updateGender}
-        />
+        
       </div>
     </div>
   );

@@ -45,13 +45,11 @@ function CharacterList () {
     const [search, setSearch] = useState("")
     const [fetchedData, updateFetchedData] = useState([]);
     const { info, results } = fetchedData;
-    const [status, updateStatus] = useState("");
-    const [gender, updateGender] = useState("");
-    const [species, updateSpecies] = useState("");
+    const [status, setStatus] = useState("");
 
     
   
-    const api = `https://rickandmortyapi.com/api/character/?page=${page}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
+    const api = `https://rickandmortyapi.com/api/character/?page=${page}&name=${search}&status=${status}`;
 
     useEffect(() => {
         async function fetchData () {
@@ -64,7 +62,7 @@ function CharacterList () {
       
 
         fetchData ()
-      }, [page, search]);
+      }, [api]);
       
 
     return (
@@ -83,10 +81,8 @@ function CharacterList () {
   <Filter
             page={page}
             status={status}
-            updateStatus={updateStatus}
-            updateGender={updateGender}
-            updateSpecies={updateSpecies}
             setPage={setPage}
+            setStatus={setStatus}
           />
     <div className="col-lg-8 col-12">
       <div className="row">
