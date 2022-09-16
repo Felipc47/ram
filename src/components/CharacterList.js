@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Character from "./Character";
 import Search from "./search";
+import Filter from "./Filter";
 
 function NavPage ({page, setPage}) {
   return (
@@ -44,10 +45,13 @@ function CharacterList () {
     const [search, setSearch] = useState("")
     const [fetchedData, updateFetchedData] = useState([]);
     const { info, results } = fetchedData;
+    const [status, updateStatus] = useState("");
+    const [gender, updateGender] = useState("");
+    const [species, updateSpecies] = useState("");
 
     
   
-    const api = `https://rickandmortyapi.com/api/character/?page=${page}&name=${search}`;  
+    const api = `https://rickandmortyapi.com/api/character/?page=${page}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
 
     useEffect(() => {
         async function fetchData () {
@@ -76,7 +80,14 @@ function CharacterList () {
             <Search setSearch={setSearch} setPage={setPage} />
             <div className="container">
   <div className="row">
-    Filter component will be placed here
+  <Filter
+            page={page}
+            status={status}
+            updateStatus={updateStatus}
+            updateGender={updateGender}
+            updateSpecies={updateSpecies}
+            setPage={setPage}
+          />
     <div className="col-lg-8 col-12">
       <div className="row">
       <Character results = {results} />
