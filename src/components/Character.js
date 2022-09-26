@@ -63,7 +63,7 @@ const Character = ({ results }) => {
   });
 } else {
   return (
-    <div className="text-info">
+    <div className="text-info display-3 bg-dark">
   Not found
 
   </div>
